@@ -16,7 +16,7 @@ class BankAccount {
         this.owner = owner;
         // Transactions are represented by empty array and no transactions 
         // have taken place at the creation of the bank account
-        this.transactions = []
+        this.transactions = [];
     }
 
     // Declaring a method that returns the current balance on the account by
@@ -26,7 +26,7 @@ class BankAccount {
         // for loop that iterates over the length of the transaction array
         for (let i = 0; i < this.transactions.length; i++) {
             // sum is equal to sum plus each elements amount in the transaction array
-            sum += this.transactions[i].amount
+            sum += this.transactions[i].amount;
         }
         return sum;
     }
@@ -37,9 +37,9 @@ class BankAccount {
         // if it is not true, will simply return out of it
         if (amount > 0) {
             // create an new variable fo deposits that is equal to a new transaction
-            let deposits = new Transaction(amount, this.owner)
+            let deposits = new Transaction(amount, this.owner);
             // the new deposit transaction is pushed to the transactions array
-            this.transactions.push(deposits)
+            this.transactions.push(deposits);
         }
     }
     // Declaring a method that that takes in an inputs of amount and payee, creates a new charge transaction
@@ -50,9 +50,9 @@ class BankAccount {
         if (amount <= this.balance()) {
             // create an new variable fo deposits that is equal to a new transaction and where the transaction occurred.
             // negative amount as a charge amount would be deducting money from the account
-            let charges = new Transaction(-amount, payee)
+            let charges = new Transaction(-amount, payee);
             // the new charge transaction is pushed to the transactions array
-            this.transactions.push(charges)
+            this.transactions.push(charges);
         }
     }
 
@@ -65,7 +65,7 @@ class Transaction {
     // Description of the transaction.  Where a charge was made or the payee for a deposit
     payee;
     //Date of the transaction which set automatically by calling new Date()
-    date
+    date;
     constructor(amount, payee) {
         this.amount = amount;
         this.payee = payee;
@@ -82,17 +82,17 @@ class SavingsAccount extends BankAccount {
     interestRate;
     constructor(accountNumber, owner, interestRate) {
         super(accountNumber, owner)
-        this.interestRate = interestRate
+        this.interestRate = interestRate;
     }
     // Declaring a method that that calculates the interest earned on the account
     // and pushes it to the transaction array
     accrueInterest() {
         // Interest calculated by multiplying balance of account times the interest rate
-        let accruedInterest = this.balance() * this.interestRate
+        let accruedInterest = this.balance() * this.interestRate;
         // create an new variable for interest earned that is equal to a new transaction
-        let interest = new Transaction(accruedInterest, "interest")
+        let interest = new Transaction(accruedInterest, "interest");
         // the interest earned is pushed to the transactions array
-        this.transactions.push(interest)
+        this.transactions.push(interest);
     }
 }
 
